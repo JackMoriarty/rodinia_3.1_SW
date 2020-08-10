@@ -197,7 +197,7 @@ void computeTempOMP(float *pIn, float* tIn, float *tOut,
         spe_param.tIn_t = spe_param.tOut_t;
         spe_param.tOut_t = t; 
         count++;
-        printf("%d/%d\n", count, numiter);
+        // printf("%d/%d\n", count, numiter);
     } while (count < numiter);
 
     return; 

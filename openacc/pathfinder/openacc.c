@@ -62,7 +62,7 @@ void run()
         int k = t + 1;
 
         // #pragma acc parallel local(min) annotate(readonly(t))
-        #pragma acc parallel local(min) cache(wall, src) copyout(dst) firstprivate(dst) annotate(readonly(t, wall, src); dimension(dst(100000)))
+        #pragma acc parallel local(min) cache(wall, src) copyout(dst) annotate(readonly(t, wall, src); dimension(dst(100000)))
         {
             #pragma acc loop
             for (n = 0; n < COLS; n++) {

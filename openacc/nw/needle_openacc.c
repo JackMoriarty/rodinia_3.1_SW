@@ -168,7 +168,7 @@ void nw_optimized()
 
     for (blk = 1; blk <= (MAX_COLS - 1) / BLOCK_SIZE; blk++){
         /**************** openMP ****************/
-        #pragma acc parallel for shared(input_itemsets, referrence) firstprivate(blk, max_rows, max_cols, penalty)
+        #pragma acc parallel loop cache(reference) annotate(readonly(reference))
         for (b_index_x = 0; b_index_x < blk; b_index_x++) {
             int b_index_y = blk - 1 - b_index_x;
             int input_itemsets_l[BLOCK_SIZE + 1][BLOCK_SIZE + 1]__attribute__((aligned(64)));
@@ -210,7 +210,7 @@ void nw_optimized()
 
     for (blk = 2; blk <= (MAX_COLS - 1) / BLOCK_SIZE; blk++) {
         /***************** openMP ***************/
-        #pragma acc parallel for shared(input_itemsets, referrence) firstprivate(blk, max_rows, max_cols, penalty)
+        #pragma acc parallel loop cache(reference) annotate(readonly(reference))
         for (b_index_x = blk - 1; b_index_x < (MAX_COLS - 1) / BLOCK_SIZE; b_index_x++) {
             int b_index_y = (MAX_COLS - 1) / BLOCK_SIZE + blk - 2 - b_index_x;
             int input_itemsets_l[BLOCK_SIZE + 1][BLOCK_SIZE + 1]__attribute__((aligned(64)));

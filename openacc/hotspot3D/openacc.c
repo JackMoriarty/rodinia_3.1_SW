@@ -153,7 +153,7 @@ void computeTempOMP(float *pIn, float* tIn, float *tOut,
     cc = 1.0 - (2.0*ce + 2.0*cn + 3.0*ct);
 
 
-    #pragma acc parallel packin(amb_temp,nx,ny,nz,Cap,dt,numiter,ce,cw,cn,cs,ct,cb,cc) cache(tIn, pIn) annotate(readonly(tIn, pIn))
+    #pragma acc parallel packin(amb_temp,nx,ny,nz,Cap,dt,numiter,ce,cw,cn,cs,ct,cb,cc) cache(pIn) annotate(readonly(pIn))
     {
         int count = 0;
         float *tIn_t = tIn;

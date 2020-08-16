@@ -82,13 +82,13 @@ void run()
     spend_time = \
         (end.tv_sec - start.tv_sec) * 1000000 + end.tv_usec - start.tv_usec;
 
-    for (i = 0; i < COLS; i++)
-        printf("%d ", wall[0][i]);
-    printf("\n");
-
-    for (i = 0; i < COLS; i++)
-        printf("%d ", dst[i]);
-    printf("\n");
+//     for (i = 0; i < COLS; i++)
+//         printf("%d ", wall[0][i]);
+//     printf("\n");
+// 
+//     for (i = 0; i < COLS; i++)
+//         printf("%d ", dst[i]);
+//     printf("\n");
 
     printf("spend time: %lf(us)\n", spend_time);
 }

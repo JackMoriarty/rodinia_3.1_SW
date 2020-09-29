@@ -46,16 +46,16 @@ if __name__ == '__main__':
             speedup.append(speedup_item)
             labels.append(benchmark_item+"/"+version_item)
 
-# 绘制柱状图
-plt.figure(figsize=(10, 4))
-plt.bar(labels, speedup)
-plt.xticks(labels, labels, rotation=60, fontsize=8)
-plt.ylabel("speedup")
-for a, b in zip(labels, speedup):
-    plt.text(a, b + 0.05, '%.2fx' % b, ha='center', va='bottom', fontsize=8)
+    # 绘制柱状图
+    plt.figure(figsize=(10, 4))
+    plt.bar(labels, speedup)
+    plt.xticks(labels, labels, rotation=60, fontsize=8)
+    plt.ylabel("speedup")
+    for a, b in zip(labels, speedup):
+        plt.text(a, b + 0.05, '%.2fx' % b, ha='center', va='bottom', fontsize=8)
 
-plt.tight_layout()
+    plt.tight_layout()
 
-# plt.savefig('result.png', dpi=300)
-plt.savefig('result.pdf', format='PDF')
-plt.show()
+    # plt.savefig('result.png', dpi=300)
+    plt.savefig('result.pdf', format='PDF')
+    plt.show()

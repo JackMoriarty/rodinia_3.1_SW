@@ -19,6 +19,12 @@ make run
 
 Then, the program will be submited to Sunway TaihuLight and wait for execution in queue.
 
+## Generate picture of result
+
+We provide the python script to generate the result picture, You need to put the result into `source/result.csv`, then run the 
+
+script `result_plot.py` in `source` directory, and the result picture will be saved into PDF file `result.pdf`
+
 ## Example
 
 Run athread version of BFS for example.
@@ -40,5 +46,3 @@ Run athread version of BFS for example.
    ```bash
    make run
    ```
-
-   

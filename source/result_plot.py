@@ -7,21 +7,17 @@ class Vividict(dict):
         return value                     # faster to return than dict lookup
 
 def get_data(filename):
-    # 计算相应项目的平均值
-    average_value = Vividict()
-    with open(filename, 'r') as csvfile:
-        reader = csv.reader(csvfile)
-        
-        for item in reader:
-            if reader.line_num == 1:
-                continue
-            sum = 0
-            for i in range(2, 7):
-                sum += float(item[i])
-            sum /= 5
-            average_value[item[0]][item[1]] = sum
-    
-    return average_value
+    # 计算相应项目时间的总和
+    sum = Vividict()
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            substr = line.split(':')
+            if substr[0] not in sum or substr[1] not in sum[substr[0]] :
+                sum[substr[0]][substr[1]] = float(substr[2])
+            else:
+                sum[substr[0]][substr[1]] += float(substr[2])
+    return sum
 
 single_average_value = {
         "backprop":106760.6,
@@ -36,13 +32,13 @@ benchmark_name = ("backprop", "bfs", "hotspot3D", "kmeans", "pathfinder", "nw")
 version_name = ("openACC", "Athread")
 
 if __name__ == '__main__':
-    average_value = get_data('result.csv')
+    average_value = get_data('result.txt')
 
     speedup = []
     labels = []
     for benchmark_item in benchmark_name:
         for version_item in version_name:
-            speedup_item = round(single_average_value[benchmark_item] / average_value[benchmark_item][version_item], 2)
+            speedup_item = round(single_average_value[benchmark_item] * 5 / average_value[benchmark_item][version_item], 2)
             speedup.append(speedup_item)
             labels.append(benchmark_item+"/"+version_item)
 
@@ -58,4 +54,4 @@ if __name__ == '__main__':
 
     # plt.savefig('result.png', dpi=300)
     plt.savefig('result.pdf', format='PDF')
-    plt.show()
+    # plt.show()

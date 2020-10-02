@@ -19,9 +19,11 @@ make run
 
 Then, the program will be submited to Sunway TaihuLight and wait for execution in queue.
 
+Besides, we also provide shell script `compile_run.sh`, this script will run all benchmark and save the result in `result.txt`
+
 ## Generate picture of result
 
-We provide the python script to generate the result picture, You need to put the result into `source/result.csv`, then run the 
+We provide the python script to generate the result picture, You need to put the `result.txt` into `source`, then run the 
 
 script `result_plot.py` in `source` directory, and the result picture will be saved into PDF file `result.pdf`
 
@@ -46,3 +48,30 @@ Run athread version of BFS for example.
    ```bash
    make run
    ```
+
+Run all benchmarks.
+
+1. Enter root folder.
+
+   ```bash
+   cd /path/to/rodinia_3.1_SW/
+   ```
+
+2. Execute the bash script.
+
+   ```bash
+   ./compile_run.sh
+   ```
+
+3. Put the `result.txt` into `source`
+
+   ```bash
+   mv result.txt source
+   ```
+
+4. Generate result figure.
+
+   ```bash
+   python result_plot.py
+   ```
+

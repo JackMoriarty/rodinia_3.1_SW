@@ -23,9 +23,7 @@ Besides, we also provide shell script `compile_run.sh`, this script will run all
 
 ## Generate picture of result
 
-We provide the python script to generate the result picture, You need to put the `result.txt` into `source`, then run the 
-
-script `result_plot.py` in `source` directory, and the result picture will be saved into PDF file `result.pdf`
+We provide the python script to generate the result picture, You need to download the `result.txt` and  `result_plot.py` located in `plot` directory to  the same folder on your PC, then run the script `result_plot.py` , and the result picture will be saved into PDF file `result.pdf`
 
 ## Example
 

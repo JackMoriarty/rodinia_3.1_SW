@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # 绘制柱状图
     plt.figure(figsize=(10, 4))
     plt.bar(labels, speedup)
-    plt.xticks(labels, labels, rotation=60, fontsize=16)
+    plt.xticks(labels, labels, rotation=45, fontsize=16, ha='right')
     plt.yticks(fontsize=10)
     plt.ylabel("speedup", fontsize=16)
     for a, b in zip(labels, speedup):

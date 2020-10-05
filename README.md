@@ -19,7 +19,7 @@ make run
 
 Then, the program will be submited to Sunway TaihuLight and wait for execution in queue.
 
-Besides, we also provide shell script `compile_run.sh`, this script will run all benchmark and save the result in `result.txt`
+Besides, we also provide shell script `compile_run.sh`, this script will run all benchmark and save the output in `result.txt`
 
 ## Generate picture of result
 
@@ -57,17 +57,13 @@ Run all benchmarks.
    cd /path/to/rodinia_3.1_SW/
    ```
 
-2. Execute the bash script.
+2. Execute the bash script, then the output file `result.txt` will be generated.
 
    ```bash
    ./compile_run.sh
    ```
 
-3. Put the `result.txt` into `source`
-
-   ```bash
-   mv result.txt source
-   ```
+3. Download `result.txt`and `result_plot.py` located in `plot` directory to  the same folder on your PC.
 
 4. Generate result figure.
 

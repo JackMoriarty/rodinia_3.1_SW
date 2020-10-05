@@ -36,13 +36,14 @@ if __name__ == '__main__':
     # 绘制柱状图
     plt.figure(figsize=(10, 4))
     plt.bar(labels, speedup)
-    plt.xticks(labels, labels, rotation=60, fontsize=10)
-    plt.ylabel("speedup", fontsize=10)
+    plt.xticks(labels, labels, rotation=60, fontsize=16)
+    plt.yticks(fontsize=10)
+    plt.ylabel("speedup", fontsize=16)
     for a, b in zip(labels, speedup):
-        plt.text(a, b + 0.05, '%.2fx' % b, ha='center', va='bottom', fontsize=10)
+        plt.text(a, b + 0.05, '%.2fx' % b, ha='center', va='bottom', fontsize=16)
         
     #拉伸y轴
-    plt.ylim(0,40)
+    plt.ylim(0,45)
 
     plt.tight_layout()
 

@@ -25,6 +25,21 @@ Besides, we also provide shell script `compile_run.sh`, this script will run all
 
 We provide the python script to generate the result picture, You need to download the `result.txt` and  `result_plot.py` located in `plot` directory to  the same folder on your PC, then run the script `result_plot.py` , and the result picture will be saved into PDF file `result.pdf`
 
+**Requirement:**
+
+- Python3: python3.8.3 is recommended.
+
+- matplotlib:
+
+  ​	Matplotlib and its dependencies are available as wheel packages for macOS, Windows and Linux distributions, you can run
+
+  the command below to install matplotlib.
+
+  ```bash
+  python -m pip install -U pip
+  python -m pip install -U matplotlib
+  ```
+
 ## Example
 
 Run athread version of BFS for example.

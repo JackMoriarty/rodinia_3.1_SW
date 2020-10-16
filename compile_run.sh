@@ -13,8 +13,10 @@ do
     make
     for j in $(seq 5)
     do
+        echo "running $i:Serial for Round $j"
         Time=$(make run|grep -i time|grep -o '[0-9]*\.[0-9]*')
         result_string="$i:Serial:$Time"
+        echo "$i:$j:Serial:$Time"
         echo $result_string >> $root_dir/result.txt
     done
     cd ..
@@ -29,8 +31,10 @@ do
     make
     for j in $(seq 5)
     do
+        echo "running $i:openACC for Round $j"
         Time=$(make run|grep -i time|grep -o '[0-9]*\.[0-9]*')
         result_string="$i:openACC:$Time"
+        echo "$i:$j:openACC:$Time"
         echo $result_string >> $root_dir/result.txt
     done
     cd ..
@@ -45,8 +49,10 @@ do
     make
     for j in $(seq 5)
     do
+        echo "running $i:Athread for Round $j"
         Time=$(make run|grep -i time|grep -o '[0-9]*\.[0-9]*')
         result_string="$i:Athread:$Time"
+        echo "$i:$j:Athread:$Time"
         echo $result_string >> $root_dir/result.txt
     done
     cd ..

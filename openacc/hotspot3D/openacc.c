@@ -161,7 +161,7 @@ void computeTempOMP(float *pIn, float* tIn, float *tOut,
 
         do {
             int z; 
-            #pragma acc for
+            #pragma acc loop
             for (z = 0; z < nz; z++) {
                 int y;
                 for (y = 0; y < ny; y++) {

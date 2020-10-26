@@ -232,10 +232,6 @@ void bpnn_layerforward(float *l1, float *l2, float **conn, int n1, int n2)
 
   /*** Set up thresholding unit ***/
   l1[0] = 1.0;
-#ifdef OPEN
-  // FIXME: 此处并行化会导致部分结果不正确, 应该是openacc*工具内部错误, 即使不加子句错误依旧存在
-  #pragma acc parallel loop copyout(l2) cache(conn, l1) annotate(dimension(l2(n2 + 1)); readonly(conn, l1))
-#endif 
   /*** For each unit in second layer ***/
   for (j = 1; j <= n2; j++) {
 
@@ -290,10 +286,7 @@ void bpnn_adjust_weights(float *delta, int ndelta, float *ly, int nly, float **w
   ly[0] = 1.0;
   //eta = 0.3;
   //momentum = 0.3;
-
-#ifdef OPEN
-  #pragma acc parallel loop copyin(delta) cache(ly) annotate(readonly(ly); dimension(delta(ndelta)))
-#endif 
+  
   for (j = 1; j <= ndelta; j++) {
     for (k = 0; k <= nly; k++) {
       new_dw = ((ETA * delta[j] * ly[k]) + (MOMENTUM * oldw[k][j]));

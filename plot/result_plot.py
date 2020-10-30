@@ -19,7 +19,7 @@ def get_data(filename):
                 sum[substr[0]][substr[1]] += float(substr[2])
     return sum
 
-benchmark_name = ("backprop", "bfs", "hotspot3D", "kmeans", "pathfinder", "nw")
+benchmark_name = ("backprop", "bfs", "hotspot3D", "kmeans", "pathfinder", "nw", "jacobi", "stencil", "nn")
 version_name = ("openACC", "Athread")
 
 if __name__ == '__main__':

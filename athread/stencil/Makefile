@@ -1,0 +1,23 @@
+CC = sw5cc
+CFLAGS = -O2
+
+SRC_DIR := src
+BIN_DIR := bin
+
+stencil: $(SRC_DIR)/main.o $(SRC_DIR)/file.o $(SRC_DIR)/kernels.o $(SRC_DIR)/parboil.o $(SRC_DIR)/kernels_slave.o
+	mkdir -p $(BIN_DIR)
+	$(CC) -hybrid $(CFLAGS) $^ -o $(BIN_DIR)/$@
+
+%_slave.o:%_slave.c
+	$(CC) -slave $(CFLAGS) -msimd $^ -c -o $@
+
+%.o: %.c
+	$(CC) -host $(CFLAGS) $^ -c -o $@
+
+.PHONY: clean run
+
+run:
+	bsub -I -b -q q_sw_expr -n 1 -cgsp 64 -share_size 4096 ./$(BIN_DIR)/stencil 512 512 64 100 -i ./datasets/default/input/512x512x64x100.bin -o ./$(BIN_DIR)/output
+
+clean:
+	rm -rf $(SRC_DIR)/*.o $(BIN_DIR)/stencil $(BIN_DIR)/output
